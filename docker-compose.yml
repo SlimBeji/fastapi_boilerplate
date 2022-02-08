@@ -1,0 +1,29 @@
+version: '3'
+services:
+  db:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: docker
+      POSTGRES_USER: docker
+      POSTGRES_DB: docker
+  redis:
+    image: redis:alpine
+  web:
+    image: postman.web
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    env_file:
+      - ./.env
+    volumes:
+      - ./:/app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+      - redis

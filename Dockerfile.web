@@ -1,0 +1,15 @@
+FROM python:3.9-slim
+
+RUN apt-get update && apt-get install -y git
+
+# Add our code
+WORKDIR /app
+COPY * /app/
+
+RUN pip install --upgrade pip && \
+  pip install pipenv && \
+  pipenv install --dev --system --deploy --ignore-pipfile
+
+EXPOSE 5000
+
+CMD uvicorn main:app --host=0.0.0.0 --port=5000 --reload
