@@ -1,5 +1,6 @@
 import asyncpg
 from tortoise import fields
+from tortoise.models import Model
 
 from postman.config import get_settings
 from postman.utils.helpers import parse_db_url
@@ -61,3 +62,7 @@ class PrimaryKey:
 class TimeData:
     created_at = fields.DatetimeField(auto_now_add=True)
     edited_at = fields.DatetimeField(auto_now_add=True)
+
+
+class MyModel(Model):
+    pass

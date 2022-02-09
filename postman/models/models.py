@@ -1,10 +1,9 @@
 from tortoise import fields
-from tortoise.models import Model
 
-from .mixins import PrimaryKey, TimeData
+from .mixins import MyModel, PrimaryKey, TimeData
 
 
-class Role(Model, PrimaryKey):
+class Role(MyModel, PrimaryKey):
     name = fields.CharField(255, unique=True)
     level = fields.IntField()
     description = fields.TextField()
@@ -18,7 +17,7 @@ class Role(Model, PrimaryKey):
         return self.name
 
 
-class User(Model, PrimaryKey):
+class User(MyModel, PrimaryKey):
     first_name = fields.CharField(255)
     last_name = fields.CharField(255)
     email = fields.CharField(255)
@@ -33,7 +32,7 @@ class User(Model, PrimaryKey):
         return self.email
 
 
-class Tag(Model, PrimaryKey):
+class Tag(MyModel, PrimaryKey):
     text = fields.CharField(50, unique=True)
 
     api_items: fields.ManyToManyRelation["ApiItem"]
@@ -43,7 +42,7 @@ class Tag(Model, PrimaryKey):
         return self.text
 
 
-class ApiItem(Model, PrimaryKey, TimeData):
+class ApiItem(MyModel, PrimaryKey, TimeData):
     label = fields.CharField(80, required=True)
     description = fields.TextField(required=True)
     url = fields.TextField(required=True)
@@ -58,7 +57,7 @@ class ApiItem(Model, PrimaryKey, TimeData):
         return self.url
 
 
-class Endpoint(Model, PrimaryKey, TimeData):
+class Endpoint(MyModel, PrimaryKey, TimeData):
     url = fields.TextField(required=True)
     label = fields.CharField(80)
     description = fields.TextField()
@@ -78,7 +77,7 @@ class Endpoint(Model, PrimaryKey, TimeData):
         return self.url
 
 
-class QueryParam(Model, PrimaryKey, TimeData):
+class QueryParam(MyModel, PrimaryKey, TimeData):
     label = fields.CharField(80, required=True)
     type = fields.CharField(20, required=True)
     description = fields.TextField()
