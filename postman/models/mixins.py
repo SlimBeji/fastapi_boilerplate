@@ -61,7 +61,7 @@ class PrimaryKey:
 
 class TimeData:
     created_at = fields.DatetimeField(auto_now_add=True)
-    edited_at = fields.DatetimeField(auto_now_add=True)
+    edited_at = fields.DatetimeField(auto_now=True)
 
 
 class MyModel(Model):
