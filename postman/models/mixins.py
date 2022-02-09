@@ -50,7 +50,12 @@ async def destroy_db():
     await conn.close()
 
 
-class PrimaryKey:
+class TimeDataMixin:
+    created_at = fields.DatetimeField(auto_now_add=True)
+    edited_at = fields.DatetimeField(auto_now=True)
+
+
+class MyAbstractBaseModel(Model):
     id = fields.IntField(pk=True)
 
     @classmethod
@@ -58,11 +63,5 @@ class PrimaryKey:
         item = await cls.get(id=id)
         return item
 
-
-class TimeData:
-    created_at = fields.DatetimeField(auto_now_add=True)
-    edited_at = fields.DatetimeField(auto_now=True)
-
-
-class MyModel(Model):
-    pass
+    class Meta:
+        abstract = True
