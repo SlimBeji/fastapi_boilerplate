@@ -11,6 +11,7 @@ uvicorn = "*"
 pydantic = "*"
 tortoise-orm = "*"
 asyncpg = "*"
+fastapi-pagination = "*"
 # Web Requests
 httpx = "*"
 # HTML templating
