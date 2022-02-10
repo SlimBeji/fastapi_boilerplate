@@ -1,3 +1,5 @@
+from enum import Enum
+
 from tortoise import fields
 
 from .mixins import MyAbstractBaseModel, TimeDataMixin
@@ -57,11 +59,20 @@ class ApiItem(MyAbstractBaseModel, TimeDataMixin):
         return self.url
 
 
+class HttpMethod(str, Enum):
+    GET = "get"
+    POST = "post"
+    patch = "patch"
+    put = "push"
+
+
 class Endpoint(MyAbstractBaseModel, TimeDataMixin):
     url = fields.TextField(required=True)
     label = fields.CharField(80)
     description = fields.TextField()
-    http_method = fields.CharField(10, required=True)
+    http_method = fields.CharEnumField(
+        HttpMethod, required=True, default=HttpMethod.GET
+    )
 
     api_item: fields.ForeignKeyRelation[ApiItem] = fields.ForeignKeyField(
         "models.ApiItem", related_name="endpoints"
@@ -77,13 +88,20 @@ class Endpoint(MyAbstractBaseModel, TimeDataMixin):
         return self.url
 
 
+class ParamLocation(str, Enum):
+    HEADER = "header"
+    PATH = "path"
+    QUERY = "query"
+    Body = "body"
+
+
 class QueryParam(MyAbstractBaseModel, TimeDataMixin):
     label = fields.CharField(80, required=True)
     type = fields.CharField(20, required=True)
     description = fields.TextField()
     default = fields.CharField(200, required=False, null=True)
     required = fields.BooleanField(default=False)
-    location = fields.CharField(20, required=True)
+    location = fields.CharEnumField(ParamLocation, required=True)
 
     endpoint: fields.ForeignKeyRelation[Endpoint] = fields.ForeignKeyField(
         "models.Endpoint", related_name="query_params"
