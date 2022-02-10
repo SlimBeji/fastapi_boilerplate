@@ -36,7 +36,7 @@ class Tag(MyAbstractBaseModel):
     text = fields.CharField(50, unique=True)
 
     api_items: fields.ManyToManyRelation["ApiItem"]
-    api_items: fields.ManyToManyRelation["Endpoint"]
+    endpoints: fields.ManyToManyRelation["Endpoint"]
 
     def __str__(self):
         return self.text
@@ -48,7 +48,7 @@ class ApiItem(MyAbstractBaseModel, TimeDataMixin):
     url = fields.TextField(required=True)
 
     tags: fields.ManyToManyRelation[Tag] = fields.ManyToManyField(
-        "models.Tag", related_name="apis", through="tag_api"
+        "models.Tag", related_name="api_items", through="tag_apiitem"
     )
 
     endpoints: fields.ReverseRelation["Endpoint"]
