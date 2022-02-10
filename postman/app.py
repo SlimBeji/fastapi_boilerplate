@@ -12,7 +12,7 @@ def create_app():
         app,
         db_url=settings.DATABASE_URL,
         modules=settings.TORTOISE_MODELS,
-        generate_schemas=True,
+        generate_schemas=False,
         add_exception_handlers=True,
     )
 

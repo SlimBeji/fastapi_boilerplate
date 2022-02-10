@@ -4,6 +4,8 @@ from postman.config import get_settings
 
 from .models import ApiItem, Endpoint, QueryParam, Role, Tag, User
 
+Tortoise.init_models(["postman.models"], "models")
+
 
 async def init_db():
     settings = get_settings()
