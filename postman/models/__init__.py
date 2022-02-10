@@ -1,3 +1,4 @@
+# flake8: noqa
 from tortoise import Tortoise
 
 from postman.config import get_settings
