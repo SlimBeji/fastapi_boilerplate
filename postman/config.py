@@ -13,6 +13,8 @@ class Settings(BaseSettings):
     }
     TORTOISE_CONNECTION_NAME: str = "default"
 
+    MAX_ITEM_PER_RESPONSE = 20
+
 
 @lru_cache()
 def get_settings():
