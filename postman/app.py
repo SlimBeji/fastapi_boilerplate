@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from tortoise.contrib.fastapi import register_tortoise
 
+from postman.api import api_routes
 from postman.config import get_settings
 
 
@@ -20,5 +21,7 @@ def create_app():
         generate_schemas=False,
         add_exception_handlers=True,
     )
+
+    register_routers(app, api_routes)
 
     return app
