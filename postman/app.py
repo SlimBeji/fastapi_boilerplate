@@ -4,6 +4,11 @@ from tortoise.contrib.fastapi import register_tortoise
 from postman.config import get_settings
 
 
+def register_routers(app, routers):
+    for router in routers:
+        app.include_router(router)
+
+
 def create_app():
     app = FastAPI()
     settings = get_settings()
