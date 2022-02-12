@@ -3,7 +3,16 @@ from tortoise import Tortoise
 
 from postman.config import get_settings
 
-from .models import ApiItem, Endpoint, QueryParam, Role, Tag, User
+from .models import (
+    ApiItem,
+    Endpoint,
+    HttpMethod,
+    ParamLocation,
+    QueryParam,
+    Role,
+    Tag,
+    User,
+)
 
 Tortoise.init_models(["postman.models"], "models")
 
