@@ -3,6 +3,7 @@ from tortoise.contrib.fastapi import register_tortoise
 
 from postman.api import api_routes
 from postman.config import settings, static_files
+from postman.views import views_routes
 
 
 def register_routers(app, routers):
@@ -28,6 +29,7 @@ def create_app():
     )
 
     register_routers(app, api_routes)
+    register_routers(app, views_routes)
     register_static_folder(app, static_files)
 
     return app
