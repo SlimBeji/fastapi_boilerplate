@@ -2,12 +2,18 @@ from fastapi import FastAPI
 from tortoise.contrib.fastapi import register_tortoise
 
 from postman.api import api_routes
-from postman.config import settings
+from postman.config import settings, static_files
 
 
 def register_routers(app, routers):
     for router in routers:
         app.include_router(router)
+
+
+def register_static_folder(
+    app, static_files, name="static", endpoint="/static"
+):
+    app.mount(endpoint, static_files, name)
 
 
 def create_app():
@@ -22,5 +28,6 @@ def create_app():
     )
 
     register_routers(app, api_routes)
+    register_static_folder(app, static_files)
 
     return app
