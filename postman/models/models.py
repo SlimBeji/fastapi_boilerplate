@@ -97,9 +97,15 @@ class ParamLocation(str, Enum):
     Body = "body"
 
 
+class TypeParam(str, Enum):
+    INTEGER = "integer"
+    STRING = "string"
+    FLOAT = "float"
+
+
 class QueryParam(MyAbstractBaseModel, TimeDataMixin):
     label = fields.CharField(80, required=True)
-    type = fields.CharField(20, required=True)
+    type = fields.CharEnumField(TypeParam, required=True)
     description = fields.TextField()
     default = fields.CharField(200, required=False, null=True)
     required = fields.BooleanField(default=False)

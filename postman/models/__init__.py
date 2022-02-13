@@ -7,5 +7,6 @@ from .models import (
     QueryParam,
     Role,
     Tag,
+    TypeParam,
     User,
 )

@@ -10,6 +10,7 @@ from postman.models import (
     ParamLocation,
     QueryParam,
     Tag,
+    TypeParam,
 )
 
 from .tools import fix_enum_validation, wrap_schema_class
@@ -87,12 +88,14 @@ class QueryParamPydanticGet(QueryParamPydanticBase):
 
 @wrap_schema_class("ParameterPost")
 @fix_enum_validation(ParamLocation, "location")
+@fix_enum_validation(TypeParam, "type")
 class QueryParamPydanticPost(QueryParamPydanticBase):
     pass
 
 
 @wrap_schema_class("ParameterPut")
 @fix_enum_validation(ParamLocation, "location")
+@fix_enum_validation(TypeParam, "type")
 class QueryParamPydanticPut(QueryParamPydanticBase):
     label: Optional[str]
     type: Optional[str]
