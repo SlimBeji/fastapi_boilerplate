@@ -186,7 +186,7 @@ async def create_apis():
                     "tags": ["currency"],
                     "query_params": [
                         {
-                            "type": "start date",
+                            "type": "string",
                             "description": "The base currency for exchange rates",
                             "default": "2018-09-01",
                             "required": True,
