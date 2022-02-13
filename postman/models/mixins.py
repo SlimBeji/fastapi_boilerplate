@@ -2,7 +2,7 @@ import asyncpg
 from tortoise import Tortoise, fields
 from tortoise.models import Model
 
-from postman.config import get_settings
+from postman.config import settings
 from postman.utils.helpers import parse_db_url
 
 
@@ -10,7 +10,6 @@ async def destroy_db():
     """Destroying the database with brute force
     Used for seeding testing databases"""
 
-    settings = get_settings()
     parsed_db_url = parse_db_url(settings.DATABASE_URL)
     user = parsed_db_url.get("user")
     password = parsed_db_url.get("password")
@@ -51,8 +50,6 @@ async def destroy_db():
 
 
 async def init_db():
-    settings = get_settings()
-
     await Tortoise.init(
         db_url=settings.DATABASE_URL,
         modules=settings.TORTOISE_MODELS,

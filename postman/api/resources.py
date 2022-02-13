@@ -3,7 +3,7 @@ from typing import Optional
 from fastapi import APIRouter, Depends, HTTPException, Path, Query, status
 from fastapi_pagination import Page, Params, paginate
 
-from postman.config import get_settings
+from postman.config import settings
 from postman.models import ApiItem, Endpoint, QueryParam, Tag
 from postman.schemas.models import (
     ApiItemPydanticGet,
@@ -19,7 +19,6 @@ from postman.schemas.models import (
 
 TAGS_REGEX = r"^\w*(,\w*)*$"
 
-settings = get_settings()
 resources_router = APIRouter(prefix="/api/resources")
 
 

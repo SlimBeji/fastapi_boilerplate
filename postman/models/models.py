@@ -4,7 +4,7 @@ from random import choice, randint, uniform
 from faker import Faker
 from tortoise import Tortoise, fields
 
-from postman.config import get_settings
+from postman.config import settings
 
 from .mixins import MyAbstractBaseModel, TimeDataMixin
 
@@ -203,5 +203,4 @@ class QueryParam(MyAbstractBaseModel, TimeDataMixin):
         return data
 
 
-settings = get_settings()
 Tortoise.init_models(settings.TORTOISE_MODELS["models"], "models")

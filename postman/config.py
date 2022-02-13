@@ -18,6 +18,8 @@ class Settings(BaseSettings):
         env_file = "../.env"
 
 
+settings = Settings()
+
 
 @lru_cache()
 def get_settings():
