@@ -1,5 +1,5 @@
 import asyncpg
-from tortoise import fields
+from tortoise import Tortoise, fields
 from tortoise.models import Model
 
 from postman.config import get_settings
@@ -48,6 +48,16 @@ async def destroy_db():
     await conn.execute(drop_database_script)
     await conn.execute(create_script)
     await conn.close()
+
+
+async def init_db():
+    settings = get_settings()
+
+    await Tortoise.init(
+        db_url=settings.DATABASE_URL,
+        modules=settings.TORTOISE_MODELS,
+    )
+    await Tortoise.generate_schemas()
 
 
 class TimeDataMixin:

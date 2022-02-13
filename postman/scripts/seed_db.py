@@ -1,15 +1,7 @@
 import asyncio
 
-from postman.models import (
-    ApiItem,
-    Endpoint,
-    QueryParam,
-    Role,
-    Tag,
-    User,
-    init_db,
-)
-from postman.models.mixins import destroy_db
+from postman.models import ApiItem, Endpoint, QueryParam, Role, Tag, User
+from postman.models.mixins import destroy_db, init_db
 
 
 async def create_roles():
