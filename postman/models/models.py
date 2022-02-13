@@ -2,6 +2,8 @@ from enum import Enum
 
 from tortoise import fields
 
+from postman.config import get_settings
+
 from .mixins import MyAbstractBaseModel, TimeDataMixin
 
 
@@ -109,3 +111,7 @@ class QueryParam(MyAbstractBaseModel, TimeDataMixin):
 
     def __str__(self):
         return self.label
+
+
+settings = get_settings()
+Tortoise.init_models(settings.TORTOISE_MODELS["models"], "models")

@@ -1,6 +1,4 @@
 # flake8: noqa
-from tortoise import Tortoise
-
 from .models import (
     ApiItem,
     Endpoint,
@@ -11,5 +9,3 @@ from .models import (
     Tag,
     User,
 )
-
-Tortoise.init_models(["postman.models"], "models")
