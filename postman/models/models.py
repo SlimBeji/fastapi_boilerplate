@@ -1,6 +1,8 @@
 from enum import Enum
+from random import choice, randint, uniform
 
-from tortoise import fields
+from faker import Faker
+from tortoise import Tortoise, fields
 
 from postman.config import get_settings
 
@@ -20,6 +22,18 @@ class Role(MyAbstractBaseModel):
     def __str__(self):
         return self.name
 
+    @classmethod
+    def random_dict(cls, save=True):
+        fake = Faker()
+
+        data = {
+            "name": fake.word(),
+            "level": randint(0, 7),
+            "description": fake.paragraph(),
+        }
+
+        return data
+
 
 class User(MyAbstractBaseModel):
     first_name = fields.CharField(255)
@@ -35,6 +49,20 @@ class User(MyAbstractBaseModel):
     def __str__(self):
         return self.email
 
+    @classmethod
+    def random_dict(cls):
+        fake = Faker()
+
+        data = {
+            "first_name": fake.first_name(),
+            "last_name": fake.last_name(),
+            "email": fake.email(),
+            "password": fake.password(),
+            "active": choice([True, False]),
+        }
+
+        return data
+
 
 class Tag(MyAbstractBaseModel):
     text = fields.CharField(50, unique=True)
@@ -44,6 +72,14 @@ class Tag(MyAbstractBaseModel):
 
     def __str__(self):
         return self.text
+
+    @classmethod
+    def random_dict(cls):
+        fake = Faker()
+
+        data = {"text": fake.word()}
+
+        return data
 
 
 class ApiItem(MyAbstractBaseModel, TimeDataMixin):
@@ -59,6 +95,18 @@ class ApiItem(MyAbstractBaseModel, TimeDataMixin):
 
     def __str__(self):
         return self.url
+
+    @classmethod
+    def random_dict(cls):
+        fake = Faker()
+
+        data = {
+            "label": fake.word(),
+            "description": fake.paragraph(),
+            "url": fake.url(),
+        }
+
+        return data
 
 
 class HttpMethod(str, Enum):
@@ -89,6 +137,19 @@ class Endpoint(MyAbstractBaseModel, TimeDataMixin):
     def __str__(self):
         return self.url
 
+    @classmethod
+    def random_dict(cls):
+        fake = Faker()
+
+        data = {
+            "url": fake.uri_path(),
+            "label": fake.word(),
+            "description": fake.paragraph(),
+            "http_method": choice([m.value for m in HttpMethod]),
+        }
+
+        return data
+
 
 class ParamLocation(str, Enum):
     HEADER = "header"
@@ -117,6 +178,29 @@ class QueryParam(MyAbstractBaseModel, TimeDataMixin):
 
     def __str__(self):
         return self.label
+
+    @classmethod
+    def random_dict(cls):
+        fake = Faker()
+
+        type_ = choice([pl.value for pl in TypeParam])
+        if type_ == TypeParam.INTEGER:
+            default = randint(0, 1000000)
+        elif type_ == TypeParam.FLOAT:
+            default = uniform(0, 10000)
+        else:
+            default = fake.word()
+
+        data = {
+            "label": fake.word(),
+            "description": fake.paragraph(),
+            "type": type_,
+            "default": default,
+            "required": choice([True, False]),
+            "location": choice([pl.value for pl in ParamLocation]),
+        }
+
+        return data
 
 
 settings = get_settings()
