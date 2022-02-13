@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     REDIS_URL: str = os.getenv("REDIS_URL")
 
     TORTOISE_MODELS: dict = {
-        "models": ["postman.models"],
+        "models": ["postman.models.models"],
     }
     TORTOISE_CONNECTION_NAME: str = "default"
 
