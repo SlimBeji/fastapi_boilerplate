@@ -1,6 +1,9 @@
+import os
 from functools import lru_cache
 
 from pydantic import BaseSettings
+
+FILEDIR = os.path.dirname(__file__)
 
 
 class Settings(BaseSettings):
@@ -15,7 +18,7 @@ class Settings(BaseSettings):
     MAX_ITEM_PER_RESPONSE = 20
 
     class Config:
-        env_file = "../.env"
+        env_file = os.path.join(FILEDIR, os.pardir, ".env")
 
 
 settings = Settings()
