@@ -73,5 +73,25 @@ class MyAbstractBaseModel(Model):
         item = await cls.get(id=id)
         return item
 
+    @classmethod
+    def random_dict(cls):
+        raise NotImplementedError(
+            f"{cls.__name__} did not implement random_dict method"
+        )
+
+    @classmethod
+    def random(cls, *args, **kwargs):
+        data = cls.random_dict(*args, **kwargs)
+        record = cls(**data)
+        return record
+
+    @classmethod
+    async def create_random(cls, *args, save=True, **kwargs):
+        record = cls.random(*args, **kwargs)
+        if save:
+            await record.save()
+
+        return record
+
     class Meta:
         abstract = True
