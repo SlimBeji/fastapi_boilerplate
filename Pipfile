@@ -4,23 +4,32 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+
 # FastApi
 fastapi = "*"
+fastapi-pagination = "*"
 starlette = "*"
 uvicorn = "*"
 pydantic = "*"
 python-dotenv = "*"
+
+# Database
 tortoise-orm = "*"
 asyncpg = "*"
-fastapi-pagination = "*"
+
 # Web Requests
 httpx = "*"
-# HTML templating
+
+# HTML packages
 jinja2 = "*"
-Faker = "*"
-# HTML parsing
 bs4 = "*"
+
+# Parsing
 unidecode = "*"
+
+# utility
+Faker = "*"
+
 
 [dev-packages]
 black = "==20.8b1"
