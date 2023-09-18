@@ -1,0 +1,29 @@
+# FastApi
+fastapi
+fastapi-pagination
+starlette
+uvicorn
+pydantic
+python-dotenv
+
+# Database
+tortoise-orm
+asyncpg
+aerich
+
+# Security
+passlib
+bcrypt
+
+# Web Requests
+httpx
+
+# HTML packages
+jinja2
+bs4
+
+# Parsing
+unidecode
+
+# utility
+Faker

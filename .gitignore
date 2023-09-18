@@ -1,0 +1,12 @@
+*.pyc
+.cache
+.env
+__pycache__
+db
+
+# Editor directories and files
+.idea
+.vscode
+
+# Notes
+todo.txt
