@@ -1,9 +1,10 @@
-from typing import Optional, Union, List
+from typing import Optional, List
 
 from fastapi import FastAPI, APIRouter
 from fastapi.staticfiles import StaticFiles
 
 from backend.api import api_routers
+from backend.config import static_files
 
 
 def register_routers(app: FastAPI, routers: List[APIRouter]):
@@ -24,5 +25,6 @@ def create_app() -> FastAPI:
     app = FastAPI()
 
     register_routers(app, api_routers)
+    register_static_folder(app, static_files)
 
     return app

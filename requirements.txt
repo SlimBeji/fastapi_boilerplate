@@ -4,6 +4,7 @@ fastapi-pagination
 starlette
 uvicorn
 pydantic
+pydantic-settings
 python-dotenv
 
 # Database
