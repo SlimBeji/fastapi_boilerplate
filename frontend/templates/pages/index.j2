@@ -1,0 +1,33 @@
+{% extends 'layouts/base.j2' %}
+
+{% block body %}
+<div class="container-fluid mt-5">
+    <h1>Online Postman</h1>
+
+    <p>Online Postman is a web hosted application that stores your API endpoints</p>
+
+    <p>Online Postman was built using FastAPI and supports both Swagger and ReDoc documentation generation</p>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Swagger</h5>
+                    <p class="card-text">Swagger UI is available at the /docs endpoint</p>
+                    <a href="/docs" class="btn btn-primary">Vist Swagger UI</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">ReDoc</h5>
+                    <p class="card-text">ReDoc UI is available at the /redocs endpoint</p>
+                    <a href="/redoc" class="btn btn-primary">Visit ReDoc UI</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
