@@ -2,7 +2,7 @@ from typing import Union
 
 from fastapi import APIRouter
 
-index_router = APIRouter(prefix='')
+index_router = APIRouter(prefix='/api')
 
 
 @index_router.get("/")
