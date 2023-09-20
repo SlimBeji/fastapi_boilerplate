@@ -3,6 +3,7 @@
 .env
 __pycache__
 db
+pgadmin
 
 # Editor directories and files
 .idea
