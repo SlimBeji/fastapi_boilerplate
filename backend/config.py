@@ -33,7 +33,7 @@ aerich_config = {
     "apps": {
         "models": {
             "models": settings.TORTOISE_MODELS["models"],
-            "default_connection": settings.TORTOISE_CONNECTION_NAME
+            "default_connection": settings.TORTOISE_CONNECTION_NAME,
         }
-    }
+    },
 }

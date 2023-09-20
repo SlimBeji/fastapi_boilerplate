@@ -5,9 +5,8 @@ from fastapi.staticfiles import StaticFiles
 from tortoise.contrib.fastapi import register_tortoise
 
 from backend.api import api_routers
-from backend.config import static_files
+from backend.config import settings, static_files
 from backend.views import views_routers
-from backend.config import settings
 
 
 def register_routers(app: FastAPI, routers: List[APIRouter]):
