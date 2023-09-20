@@ -20,6 +20,7 @@ dev-urls := http://localhost:5000/ http://localhost:5000/docs http://localhost:5
 
 #################### Commands ############################
 
+# Dev commands
 pages:
 ifeq ($(os_name), Windows_NT)
 	echo Not Implemented in Windows
@@ -37,6 +38,21 @@ black:
 
 lint: isort black
 
+# DB comands
+dump-db:
+	sudo rm -rf db/
+
+init-db:
+	docker exec -it postman-app aerich init -t backend.config.aerich_config
+	docker exec -it postman-app aerich init-db
+
+migrate-db:
+	docker exec -it postman-app aerich migrate --name $(name)
+
+upgrade-db:
+	docker exec -it postman-app aerich upgrade
+
+# Docker commands
 run:
 	docker-compose down
 	docker-compose up
