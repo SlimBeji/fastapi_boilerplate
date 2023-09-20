@@ -42,8 +42,10 @@ lint: isort black
 dump-db:
 	sudo rm -rf db/
 
-init-db:
+init-aerich:
 	docker exec -it postman-app aerich init -t backend.config.aerich_config
+
+init-db:
 	docker exec -it postman-app aerich init-db
 
 migrate-db:
@@ -51,6 +53,13 @@ migrate-db:
 
 upgrade-db:
 	docker exec -it postman-app aerich upgrade
+
+seed-db:
+	echo SEEDING THE DB
+
+create-db: init-aerich init-db seed-db
+
+recreate-db: init-aerich upgrade-db seed-db
 
 # Docker commands
 run:
