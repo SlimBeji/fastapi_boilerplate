@@ -5,6 +5,7 @@ This is a FastAPI boilerplate meant for learning purposes.
 ## Stack
 - [FastAPI](https://fastapi.tiangolo.com/) for building Apps and APIs
 - [Tortoise-ORM](https://tortoise-orm.readthedocs.io/en/latest/) as DB ORM
+- [Aerich](https://github.com/tortoise/aerich) as Tortoise-ORM migration tool
 - [Pydantic](https://pydantic-docs.helpmanual.io/) for data validation, serialization, etc ...
 - [Docker-Compose](https://docs.docker.com/compose/) for using Postgres and Redis locally
 - [Jinja2](https://jinja.palletsprojects.com/en/3.0.x/) for templating.

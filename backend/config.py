@@ -28,3 +28,12 @@ class Settings(BaseSettings):
 settings = Settings()
 templates = Jinja2Templates(settings.TEMPLATES_FOLDER)
 static_files = StaticFiles(directory=settings.STATIC_FOLDER)
+aerich_config = {
+    "connections": {"default": settings.DATABASE_URL},
+    "apps": {
+        "models": {
+            "models": settings.TORTOISE_MODELS["models"],
+            "default_connection": settings.TORTOISE_CONNECTION_NAME
+        }
+    }
+}
