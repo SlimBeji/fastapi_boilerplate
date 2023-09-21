@@ -55,7 +55,7 @@ upgrade-db:
 	docker exec -it postman-app aerich upgrade
 
 seed-db:
-	echo SEEDING THE DB
+	docker exec -it postman-app python -m backend.scripts.seed_db
 
 create-db: init-aerich init-db seed-db
 
