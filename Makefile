@@ -54,7 +54,7 @@ init-aerich:
 init-db:
 	docker exec -it postman-app aerich init-db
 
-migrate-db:
+migrate-db: init-aerich
 	docker exec -it postman-app aerich migrate --name $(name)
 
 upgrade-db:
