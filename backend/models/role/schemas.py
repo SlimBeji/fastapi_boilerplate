@@ -23,10 +23,10 @@ class RoleGet(RoleBaseSchema):
 
 
 class RoleSearch(RoleBaseSchema):
-    id: Optional[int]
-    name: Optional[str]
-    level: Optional[int]
-    description: Optional[str]
+    id: Optional[int] = None
+    name: Optional[str] = None
+    level: Optional[int] = None
+    description: Optional[str] = None
 
 
 class RolePost(RoleBaseSchema):

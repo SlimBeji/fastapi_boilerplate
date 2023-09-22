@@ -25,7 +25,7 @@ class EndpointOverview(BaseModel):
 class EndpointGet(EndpointBaseSchema):
     id: int
     api_item: ApiItemOverview
-    tags: Optional[List[str]]
+    tags: Optional[List[str]] = None
 
     @validator("tags", pre=True)
     def convert_tags(cls, v):
@@ -34,23 +34,23 @@ class EndpointGet(EndpointBaseSchema):
 
 
 class EndpointSearch(EndpointBaseSchema):
-    url: Optional[str]
-    label: Optional[str]
-    description: Optional[str]
-    http_method: Optional[HttpMethod]
-    tags: Optional[constr(pattern=Regex.TAGS.value)]
+    url: Optional[str] = None
+    label: Optional[str] = None
+    description: Optional[str] = None
+    http_method: Optional[HttpMethod] = None
+    tags: Optional[constr(pattern=Regex.TAGS.value)] = None
 
 
 class EndpointPost(EndpointBaseSchema):
-    tags: Optional[List[str]]
+    tags: Optional[List[str]] = None
 
 
 class EndpointPut(EndpointBaseSchema):
-    url: Optional[str]
-    label: Optional[str]
-    description: Optional[str]
-    http_method: Optional[HttpMethod]
-    tags: Optional[List[str]]
+    url: Optional[str] = None
+    label: Optional[str] = None
+    description: Optional[str] = None
+    http_method: Optional[HttpMethod] = None
+    tags: Optional[List[str]] = None
 
 
 EndpointInDb = pydantic_model_creator(Endpoint, name="EndpointInDB")

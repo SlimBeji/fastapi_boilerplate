@@ -30,21 +30,21 @@ class ApiItemGet(ApiItemBaseSchema):
 
 
 class ApiItemSearch(ApiItemBaseSchema):
-    label: Optional[str]
-    description: Optional[str]
-    url: Optional[str]
-    tags: Optional[constr(pattern=Regex.TAGS.value)]
+    label: Optional[str] = None
+    description: Optional[str] = None
+    url: Optional[str] = None
+    tags: Optional[constr(pattern=Regex.TAGS.value)] = None
 
 
 class ApiItemPost(ApiItemBaseSchema):
-    tags: Optional[List[str]]
+    tags: Optional[List[str]] = None
 
 
 class ApiItemPut(ApiItemBaseSchema):
-    label: Optional[str]
-    description: Optional[str]
-    url: Optional[str]
-    tags: Optional[List[str]]
+    label: Optional[str] = None
+    description: Optional[str] = None
+    url: Optional[str]  = None
+    tags: Optional[List[str]] = None
 
 
 ApiItemInDB = pydantic_model_creator(ApiItem, name="ApiInDB")

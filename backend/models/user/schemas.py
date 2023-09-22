@@ -30,20 +30,20 @@ class UserGet(UserBaseSchema):
 
 
 class UserSearch(UserBaseSchema):
-    id: Optional[int]
-    first_name: Optional[str]
-    last_name: Optional[str]
-    email: Optional[str]
-    active: Optional[bool]
-    role_name: Optional[str]
+    id: Optional[int] = None
+    first_name: Optional[str] = None
+    last_name: Optional[str] = None
+    email: Optional[str] = None
+    active: Optional[bool] = None
+    role_name: Optional[str] = None
 
 
 class UserPost(UserBaseSchema):
-    role_name: Optional[str]
+    role_name: Optional[str] = None
 
 
 class UserPut(UserBaseSchema):
-    role_name: Optional[str]
+    role_name: Optional[str] = None
 
 
 UserInDB = pydantic_model_creator(User, name="UserInDB", exclude_readonly=True)

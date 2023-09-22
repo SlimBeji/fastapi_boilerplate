@@ -12,7 +12,7 @@ class QueryParamBaseSchema(BaseModel):
     label: str
     type: TypeParam
     description: str
-    default: Optional[str]
+    default: Optional[str] = None
     required: bool
     location: ParamLocation
 
@@ -30,12 +30,12 @@ class QueryParamGet(QueryParamBaseSchema):
 
 
 class QueryParamSearch(QueryParamBaseSchema):
-    label: Optional[str]
-    type: Optional[TypeParam]
-    description: Optional[str]
-    default: Optional[str]
-    required: Optional[bool]
-    location: Optional[ParamLocation]
+    label: Optional[str] = None
+    type: Optional[TypeParam] = None
+    description: Optional[str] = None
+    default: Optional[str] = None
+    required: Optional[bool] = None
+    location: Optional[ParamLocation] = None
 
 
 class QueryParamPost(QueryParamBaseSchema):
@@ -43,12 +43,12 @@ class QueryParamPost(QueryParamBaseSchema):
 
 
 class QueryParamPut(QueryParamBaseSchema):
-    label: Optional[str]
-    type: Optional[TypeParam]
-    description: Optional[str]
-    default: Optional[str]
-    required: Optional[bool]
-    location: Optional[ParamLocation]
+    label: Optional[str] = None
+    type: Optional[TypeParam] = None
+    description: Optional[str] = None
+    default: Optional[str] = None
+    required: Optional[bool] = None
+    location: Optional[ParamLocation] = None
 
 
 QueryParamInDB = pydantic_model_creator(QueryParam, name="QueryParmInDB")
