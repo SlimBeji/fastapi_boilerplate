@@ -9,9 +9,11 @@ from backend.config import settings, static_files
 from backend.views import views_routers
 
 
-def register_routers(app: FastAPI, routers: List[APIRouter]):
+def register_routers(
+    app: FastAPI, routers: List[APIRouter], include_in_schema: bool = True
+):
     for router in routers:
-        app.include_router(router)
+        app.include_router(router, include_in_schema=include_in_schema)
 
 
 def register_static_folder(
@@ -32,7 +34,7 @@ def create_app() -> FastAPI:
         modules=settings.TORTOISE_MODELS,
     )
     register_routers(app, api_routers)
-    register_routers(app, views_routers)
+    register_routers(app, views_routers, include_in_schema=False)
     register_static_folder(app, static_files)
 
     return app
