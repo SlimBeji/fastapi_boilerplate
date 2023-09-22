@@ -38,6 +38,12 @@ black:
 
 lint: isort black
 
+fix-permission:
+# Files genated withing docker have root permission
+# linting command will fail because of permissions
+# so using the chown command to fix the problem
+	sudo chown -R slim:slim ./
+
 # DB comands
 dump-db:
 	sudo rm -rf db/
