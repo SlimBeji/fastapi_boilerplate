@@ -38,7 +38,7 @@ class EndpointSearch(EndpointBaseSchema):
     label: Optional[str]
     description: Optional[str]
     http_method: Optional[HttpMethod]
-    tags: Optional[constr(regex=Regex.TAGS.value)]
+    tags: Optional[constr(pattern=Regex.TAGS.value)]
 
 
 class EndpointPost(EndpointBaseSchema):

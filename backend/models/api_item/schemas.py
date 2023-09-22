@@ -33,7 +33,7 @@ class ApiItemSearch(ApiItemBaseSchema):
     label: Optional[str]
     description: Optional[str]
     url: Optional[str]
-    tags: Optional[constr(regex=Regex.TAGS.value)]
+    tags: Optional[constr(pattern=Regex.TAGS.value)]
 
 
 class ApiItemPost(ApiItemBaseSchema):
