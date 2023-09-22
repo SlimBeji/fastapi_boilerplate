@@ -3,7 +3,7 @@ from typing import Optional
 from pydantic import BaseModel, validator
 from tortoise.contrib.pydantic import pydantic_model_creator
 
-from backend.models.user import User
+from backend.models.user.model import User
 
 
 class UserBaseSchema(BaseModel):

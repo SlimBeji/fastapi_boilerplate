@@ -5,8 +5,8 @@ from tortoise.contrib.pydantic import pydantic_model_creator
 
 from backend.enums.http import HttpMethod
 from backend.enums.regex import Regex
-from backend.models import Endpoint
-from backend.models.api_item import ApiItemOverview
+from backend.models.api_item.schemas import ApiItemOverview
+from backend.models.endpoint.model import Endpoint
 
 
 class EndpointBaseSchema(BaseModel):

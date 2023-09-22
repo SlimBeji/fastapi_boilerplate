@@ -3,9 +3,9 @@ from typing import List, Optional
 from pydantic import BaseModel
 from tortoise.contrib.pydantic import pydantic_model_creator
 
-from backend.models import Tag
-from backend.models.api_item import ApiItemOverview
-from backend.models.endpoint import EndpointOverview
+from backend.models.api_item.schemas import ApiItemOverview
+from backend.models.endpoint.schemas import EndpointOverview
+from backend.models.tag.model import Tag
 
 
 class TagBaseSchema(BaseModel):

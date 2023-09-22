@@ -3,7 +3,7 @@ from typing import Optional
 from pydantic import BaseModel
 from tortoise.contrib.pydantic import pydantic_model_creator
 
-from backend.models.role import Role
+from backend.models.role.model import Role
 
 
 class RoleBaseSchema(BaseModel):

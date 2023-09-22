@@ -4,8 +4,8 @@ from pydantic import BaseModel
 from tortoise.contrib.pydantic import pydantic_model_creator
 
 from backend.enums.http import ParamLocation, TypeParam
-from backend.models import QueryParam
-from backend.models.endpoint import EndpointOverview
+from backend.models.endpoint.schemas import EndpointOverview
+from backend.models.query_param.model import QueryParam
 
 
 class QueryParamBaseSchema(BaseModel):

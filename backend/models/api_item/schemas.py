@@ -4,7 +4,7 @@ from pydantic import BaseModel, constr, validator
 from tortoise.contrib.pydantic import pydantic_model_creator
 
 from backend.enums.regex import Regex
-from backend.models import ApiItem
+from backend.models.api_item.model import ApiItem
 
 
 class ApiItemBaseSchema(BaseModel):
