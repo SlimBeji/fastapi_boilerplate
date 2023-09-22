@@ -46,4 +46,4 @@ class UserPut(UserBaseSchema):
     role_name: Optional[str]
 
 
-UserInDB = pydantic_model_creator(User, name="User", exclude_readonly=True)
+UserInDB = pydantic_model_creator(User, name="UserInDB", exclude_readonly=True)

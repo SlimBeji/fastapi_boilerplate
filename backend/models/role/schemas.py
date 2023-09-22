@@ -37,4 +37,4 @@ class RolePut(RoleBaseSchema):
     pass
 
 
-RoleInDB = pydantic_model_creator(Role, name="Role", exclude_readonly=True)
+RoleInDB = pydantic_model_creator(Role, name="RoleInDB", exclude_readonly=True)

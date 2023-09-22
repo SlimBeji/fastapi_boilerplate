@@ -37,4 +37,4 @@ class TagPut(TagBaseSchema):
     pass
 
 
-TagInDB = pydantic_model_creator(Tag, name="Tag", exclude_readonly=True)
+TagInDB = pydantic_model_creator(Tag, name="TagInDB", exclude_readonly=True)
