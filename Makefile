@@ -36,7 +36,10 @@ isort:
 black:
 	python -m black .
 
-lint: isort black
+autoflake:
+	autoflake -r --in-place --remove-all-unused-imports --exclude=**/models/__init__.py  ./
+
+lint: isort black autoflake
 
 fix-permission:
 # Files genated withing docker have root permission

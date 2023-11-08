@@ -4,4 +4,4 @@ pytest
 # Linting Packages
 black
 isort
-flake8
+autoflake

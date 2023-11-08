@@ -1,6 +1,5 @@
 from fastapi import APIRouter, Depends
 from fastapi_pagination import Page
-from fastapi_pagination.ext.tortoise import paginate
 
 from backend.dependencies import PaginationParams, apiitem_lookup, comma_joined_tags
 from backend.models.api_item.model import ApiItem
