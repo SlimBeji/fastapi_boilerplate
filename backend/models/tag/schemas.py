@@ -19,8 +19,8 @@ class TagOverview(BaseModel):
 
 class TagGet(TagBaseSchema):
     id: int
-    api_items: Optional[List[ApiItemOverview]] = None
-    endpoints: Optional[List[EndpointOverview]] = None
+    api_items: Optional[List[ApiItemOverview]] = []
+    endpoints: Optional[List[EndpointOverview]] = []
 
 
 class TagSearch(TagBaseSchema):

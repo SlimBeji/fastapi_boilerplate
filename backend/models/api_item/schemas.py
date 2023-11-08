@@ -21,7 +21,7 @@ class ApiItemOverview(BaseModel):
 
 class ApiItemGet(ApiItemBaseSchema):
     id: int
-    tags: Optional[List[str]]
+    tags: List[str] = []
 
     @validator("tags", pre=True)
     def convert_tags(cls, v):
@@ -37,14 +37,14 @@ class ApiItemSearch(ApiItemBaseSchema):
 
 
 class ApiItemPost(ApiItemBaseSchema):
-    tags: Optional[List[str]] = None
+    tags: Optional[List[str]] = []
 
 
 class ApiItemPut(ApiItemBaseSchema):
     label: Optional[str] = None
     description: Optional[str] = None
     url: Optional[str]  = None
-    tags: Optional[List[str]] = None
+    tags: Optional[List[str]] = []
 
 
 ApiItemInDB = pydantic_model_creator(ApiItem, name="ApiInDB")
