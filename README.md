@@ -15,6 +15,7 @@ This is a FastAPI boilerplate meant for learning purposes.
 1. Create a `.env` file in root directory as follows
 
 ```
+PYTHONPATH=/app
 DATABASE_URL=postgres://docker:docker@db:5432/docker
 REDIS_URL=redis://redis:6379/
 ENV=local
