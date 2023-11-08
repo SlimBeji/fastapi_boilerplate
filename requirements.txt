@@ -3,7 +3,7 @@ fastapi
 fastapi-pagination
 starlette
 uvicorn
-pydantic
+pydantic>=2.4
 pydantic-settings
 python-dotenv
 

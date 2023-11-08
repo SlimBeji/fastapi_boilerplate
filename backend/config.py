@@ -2,7 +2,7 @@ import os
 
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 FILEDIR = os.path.dirname(__file__)
 
@@ -23,8 +23,7 @@ class Settings(BaseSettings):
     TEMPLATES_FOLDER: str = os.path.join(FRONTEND_FOLDER, "templates")
     STATIC_FOLDER: str = os.path.join(FRONTEND_FOLDER, "static")
 
-    class Config:
-        env_file = os.path.join(FILEDIR, os.pardir, ".env")
+    _CONFIG = SettingsConfigDict(env_file=os.path.join(FILEDIR, os.pardir, ".env"))
 
 
 settings = Settings()

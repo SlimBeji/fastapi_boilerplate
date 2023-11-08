@@ -1,6 +1,6 @@
 from typing import List, Optional
 
-from pydantic import BaseModel, validator
+from pydantic import BaseModel, field_validator
 from tortoise.contrib.pydantic import pydantic_model_creator
 
 from backend.enums.http import HttpMethod
@@ -26,7 +26,7 @@ class EndpointGet(EndpointBaseSchema):
     api_item: ApiItemOverview
     tags: List[str] = []
 
-    @validator("tags", pre=True)
+    @field_validator("tags", mode="before")
     def convert_tags(cls, v):
         result = [i.text for i in v if i.text]
         return result

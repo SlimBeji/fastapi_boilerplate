@@ -1,6 +1,6 @@
 from typing import Optional
 
-from pydantic import BaseModel, validator
+from pydantic import BaseModel, field_validator
 from tortoise.contrib.pydantic import pydantic_model_creator
 
 from backend.models.user.model import User
@@ -22,7 +22,7 @@ class UserGet(UserBaseSchema):
     id: int
     role: str
 
-    @validator("role", pre=True)
+    @field_validator("role", mode="before")
     def convert_role(cls, v):
         if v:
             return v.name

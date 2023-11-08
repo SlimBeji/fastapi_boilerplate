@@ -1,6 +1,6 @@
 from typing import List, Optional
 
-from pydantic import BaseModel, validator
+from pydantic import BaseModel, field_validator
 from tortoise.contrib.pydantic import pydantic_model_creator
 
 from backend.models.api_item.model import ApiItem
@@ -23,7 +23,7 @@ class ApiItemGet(ApiItemBaseSchema):
     id: int
     tags: List[str] = []
 
-    @validator("tags", pre=True)
+    @field_validator("tags", mode="before")
     def convert_tags(cls, v):
         result = [i.text for i in v if i.text]
         return result
@@ -38,11 +38,11 @@ class ApiItemSearch(ApiItemBaseSchema):
 class ApiItemPost(ApiItemBaseSchema):
     tags: Optional[List[str]] = []
 
-    @validator("url")
+    @field_validator("url")
     def validate_url(cls, v):
         return domain_validation(v)
 
-    @validator("tags")
+    @field_validator("tags")
     def strip_tags(cls, v):
         if v:
             return [t.strip() for t in v]
