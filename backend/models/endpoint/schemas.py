@@ -29,7 +29,7 @@ class EndpointGet(EndpointBaseSchema):
 
     @validator("tags", pre=True)
     def convert_tags(cls, v):
-        result = [i.get("text") for i in v if i.get("text")]
+        result = [i.text for i in v if i.text]
         return result
 
 
