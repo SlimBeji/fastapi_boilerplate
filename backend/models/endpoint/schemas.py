@@ -1,10 +1,9 @@
 from typing import List, Optional
 
-from pydantic import BaseModel, constr, validator
+from pydantic import BaseModel, validator
 from tortoise.contrib.pydantic import pydantic_model_creator
 
 from backend.enums.http import HttpMethod
-from backend.enums.regex import Regex
 from backend.models.api_item.schemas import ApiItemOverview
 from backend.models.endpoint.model import Endpoint
 
@@ -38,7 +37,6 @@ class EndpointSearch(EndpointBaseSchema):
     label: Optional[str] = None
     description: Optional[str] = None
     http_method: Optional[HttpMethod] = None
-    tags: Optional[constr(pattern=Regex.TAGS.value)] = None
 
 
 class EndpointPost(EndpointBaseSchema):

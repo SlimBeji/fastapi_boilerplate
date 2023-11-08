@@ -1,9 +1,8 @@
 from typing import List, Optional
 
-from pydantic import BaseModel, constr, validator
+from pydantic import BaseModel, validator
 from tortoise.contrib.pydantic import pydantic_model_creator
 
-from backend.enums.regex import Regex
 from backend.models.api_item.model import ApiItem
 
 
@@ -33,7 +32,6 @@ class ApiItemSearch(ApiItemBaseSchema):
     label: Optional[str] = None
     description: Optional[str] = None
     url: Optional[str] = None
-    tags: Optional[constr(pattern=Regex.TAGS.value)] = None
 
 
 class ApiItemPost(ApiItemBaseSchema):
