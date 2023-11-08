@@ -55,4 +55,6 @@ class ApiItemPut(ApiItemPost):
     tags: Optional[List[str]] = []
 
 
-ApiItemInDB = pydantic_model_creator(ApiItem, name="ApiInDB")
+ApiItemInDB = pydantic_model_creator(
+    ApiItem, name="ApiInDB", exclude=("endpoints", "tags.endpoints")
+)
