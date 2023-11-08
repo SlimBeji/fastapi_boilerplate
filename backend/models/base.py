@@ -37,10 +37,13 @@ class MyAbstractBaseModel(Model):
         return item
 
     @classmethod
-    def search(cls, prefetch=None, first=False, **filters):
-        query = cls.filter(**filters)
+    def search(cls, prefetch=None, first=False, distinct=True, **filters):
+        query = cls.filter(**filters).order_by("id")
         if prefetch:
             query = query.prefetch_related(*prefetch)
+
+        if distinct:
+            query = query.distinct()
 
         if first:
             query = query.first()
