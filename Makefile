@@ -74,3 +74,6 @@ run:
 
 build:
 	docker-compose build
+
+test:
+	docker exec -it postman-app pytest
