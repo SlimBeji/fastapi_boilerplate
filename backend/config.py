@@ -17,6 +17,8 @@ class Settings(BaseSettings):
     }
     TORTOISE_CONNECTION_NAME: str = "default"
 
+    MAX_ITEM_PER_RESPONSE: int = 20
+
     FRONTEND_FOLDER: str = os.path.join(FILEDIR, os.pardir, "frontend")
     TEMPLATES_FOLDER: str = os.path.join(FRONTEND_FOLDER, "templates")
     STATIC_FOLDER: str = os.path.join(FRONTEND_FOLDER, "static")
