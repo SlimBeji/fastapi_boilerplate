@@ -4,6 +4,7 @@ from pydantic import BaseModel, validator
 from tortoise.contrib.pydantic import pydantic_model_creator
 
 from backend.models.api_item.model import ApiItem
+from backend.utils.validators import domain_validation
 
 
 class ApiItemBaseSchema(BaseModel):
@@ -37,8 +38,17 @@ class ApiItemSearch(ApiItemBaseSchema):
 class ApiItemPost(ApiItemBaseSchema):
     tags: Optional[List[str]] = []
 
+    @validator("url")
+    def validate_url(cls, v):
+        return domain_validation(v)
 
-class ApiItemPut(ApiItemBaseSchema):
+    @validator("tags")
+    def strip_tags(cls, v):
+        if v:
+            return [t.strip() for t in v]
+
+
+class ApiItemPut(ApiItemPost):
     label: Optional[str] = None
     description: Optional[str] = None
     url: Optional[str] = None
