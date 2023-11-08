@@ -41,7 +41,7 @@ class ApiItemPost(ApiItemBaseSchema):
 class ApiItemPut(ApiItemBaseSchema):
     label: Optional[str] = None
     description: Optional[str] = None
-    url: Optional[str]  = None
+    url: Optional[str] = None
     tags: Optional[List[str]] = []
 
 
