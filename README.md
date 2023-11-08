@@ -1,6 +1,8 @@
 # About this project
 
-This is a FastAPI boilerplate meant for learning purposes.
+This is a FastAPI boilerplate meant for learning purposes. 
+
+The main idea is to build a postman-like web application that would store various APIs and endpoints calls. 
 
 ## Stack
 - [FastAPI](https://fastapi.tiangolo.com/) for building Apps and APIs
